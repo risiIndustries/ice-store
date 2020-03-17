@@ -1,7 +1,7 @@
 {
 	"iceapps": [
 		{	
-			"id":"codepen",
+			"id": "codepen",
 			"name": "Codepen",
 			"url": "https://codepen.io/",
 			"description": "An online community for sharing their front-end web development projects.",
@@ -9,7 +9,7 @@
 			"price": "Free"
 		},
 		{	
-			"id":"coronavirusmap",
+			"id": "coronavirusmap",
 			"name": "Coronavirus Interactive Map",
 			"url": "https://coronavirus.jhu.edu/map.html",
 			"description": "Learn about all the Coronavirus cases in your area.",

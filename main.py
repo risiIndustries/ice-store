@@ -6,9 +6,7 @@ import urllib
 import json
 
 class window1(Gtk.Window):
-
 	
-
 	# The Window
 	def __init__(self):
 

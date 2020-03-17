@@ -12,16 +12,6 @@ class window1(Gtk.Window):
 	# The Window
 	def __init__(self):
 
-		self.featuredPos = 1
-		self.accessoriesPos = 1
-		self.gamesPos = 1
-		self.graphicsPos = 1
-		self.internetPos = 1
-		self.multimediaPos = 1
-		self.officePos = 1
-		self.programmingPos = 1
-		self.systemPos = 1
-
 		# Generating Window
 		Gtk.Window.__init__(self, title="Ice Store")
 		self.set_default_size(360, 280)

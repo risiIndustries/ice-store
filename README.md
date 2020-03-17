@@ -79,32 +79,32 @@ Subscription
 
 Here are some examples.
 
-```
+```json
 {
-			"id": "gmail",
-			"name": "Gmail",
-			"url": "https://mail.google.com/mail/u/0/",
-			"description": "The world's most popular Email service.",
-			"catagory": "internet",
-			"price": "Freemium with Ads"
-		},
-		{
-			"id": "gmaps",
-			"name": "Google Maps",
-			"url": "https://www.google.com/maps",
-			"description": "Google's wildly popular mapping service.",
-			"catagory": "accessories",
-			"price": "Free"
-		},
-		{
-			"id": "gdrive",
-			"name": "Google Drive",
-			"url": "https://drive.google.com/drive/u/0/",
-			"description": "Google's tool for online file storage and backup/synchronization.",
-			"catagory": "office",
-			"price": "Freemium"
-		},
+	"id": "gmail",
+	"name": "Gmail",
+	"url": "https://mail.google.com/mail/u/0/",
+	"description": "The world's most popular Email service.",
+	"catagory": "internet",
+	"price": "Freemium with Ads"
+},
+{
+	"id": "gdrive",
+	"name": "Google Drive",
+	"url": "https://drive.google.com/drive/u/0/",
+	"description": "Google's tool for online file storage and backup/synchronization.",
+	"catagory": "office",
+	"price": "Freemium"
+},
+{
+	"id": "gmaps",
+	"name": "Google Maps",
+	"url": "https://www.google.com/maps",
+	"description": "Google's wildly popular mapping service.",
+	"catagory": "accessories",
+	"price": "Free"
+},
 ```
 
 ## Other things to note
-Please sort all of the json data entries in alphabetical order. That way, Python also interprets them in alphabetical order and the list becomes in alphabetical order.
+Please sort all of the json data entries in alphabetical order by the name entry. That way, Python also interprets them in alphabetical order and the list becomes in alphabetical order.

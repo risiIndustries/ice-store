@@ -16,6 +16,13 @@
 			"catagory": "accessories",
 			"price": "Free"
 		},
+		{	"id": "discord",
+			"name": "Discord",
+			"url": "https://discordapp.com/app",
+			"description": "A feature-rich chat platform designed for gamers in mind",
+			"catagory": "internet",
+			"price": "Freemium"
+		},
 		{	
 			"id": "evernote",
 			"name": "Evernote",
@@ -100,9 +107,17 @@
 		{	
 			"id": "scratch",
 			"name": "Scratch",
-			"url": "scratch.mit.edu",
+			"url": "https://scratch.mit.edu",
 			"description": "A block based programming language designed to help people learn the basics of coding.",
 			"catagory": "programming",
+			"price": "Free"
+		},
+		{	
+			"id": "slack",
+			"name": "Slack",
+			"url": "https://app.slack.com/client",
+			"description": "A instant messager designed for collaboration in the Workplace. ",
+			"catagory": "office",
 			"price": "Free"
 		},
 		{	
@@ -121,13 +136,21 @@
 			"catagory": "graphics",
 			"price": "Free"
 		},
+		{	
+			"id": "trello",
+			"name": "Trello",
+			"url": "https://trello.com",
+			"description": "A project planning tool to help get things done before the deadline.",
+			"catagory": "office",
+			"price": "Freemium"
+		},
 		{
-			"id": "youtube",
-			"name": "YouTube",
-			"url": "https://youtube.com/",
-			"description": "A popular video sharing platform.",
+			"id": "youtubeLive",
+			"name": "YouTube Live Dashboard",
+			"url": "https://www.youtube.com/livestreaming/",
+			"description": "Manage your YouTube Live Streams using the YouTube Live Dashboard.",
 			"catagory": "multimedia",
-			"price": "Freemium with Ads"
+			"price": "Free"
 		}
 	]
 }

@@ -1,7 +1,7 @@
 {
 	"iceapps": [
 		{	
-			"id":"codepen",
+			"id": "codepen",
 			"name": "Codepen",
 			"url": "https://codepen.io/",
 			"description": "An online community for sharing their front-end web development projects.",
@@ -9,7 +9,7 @@
 			"price": "Free"
 		},
 		{	
-			"id":"coronavirusmap",
+			"id": "coronavirusmap",
 			"name": "Coronavirus Interactive Map",
 			"url": "https://coronavirus.jhu.edu/map.html",
 			"description": "Learn about all the Coronavirus cases in your area.",
@@ -56,20 +56,20 @@
 			"price": "Freemium with Ads"
 		},
 		{
-			"id": "gmaps",
-			"name": "Google Maps",
-			"url": "https://www.google.com/maps",
-			"description": "Google's wildly popular mapping service.",
-			"catagory": "accessories",
-			"price": "Free"
-		},
-		{
 			"id": "gdrive",
 			"name": "Google Drive",
 			"url": "https://drive.google.com/drive/u/0/",
 			"description": "Google's tool for online file storage and backup/synchronization.",
 			"catagory": "office",
 			"price": "Freemium"
+		},
+		{
+			"id": "gmaps",
+			"name": "Google Maps",
+			"url": "https://www.google.com/maps",
+			"description": "Google's wildly popular mapping service.",
+			"catagory": "accessories",
+			"price": "Free"
 		},
 		{	
 			"id": "krunker",

@@ -72,7 +72,7 @@ class window1(Gtk.Window):
 
 		for ssb in repo["iceapps"]:
 			exec("def " + ssb["id"] + """_clicked(self):
-	subprocess.Popen(["ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--dialogmode\", \"True\"])")
+	subprocess.Popen(["./ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--dialogmode\", \"True\"])")
 
 			exec("self." + ssb["id"] + "Row = Gtk.ListBoxRow()")
 			exec("self." + ssb["id"] + "Box = Gtk.Box()")
@@ -83,7 +83,7 @@ class window1(Gtk.Window):
 			exec("self." + ssb["id"] + "Image.set_from_icon_name(\"gedit\", Gtk.IconSize.DIALOG)")
 			exec("self." + ssb["id"] + "Grid.attach(self." + ssb["id"] + "Image, 1, 3, 2, 2)")
 			exec("self." + ssb["id"] + "NameLabel = Gtk.Label()")
-			exec("self." + ssb["id"] + "NameLabel.set_markup(\"<b>\" + ssb[\"name\"] + \"</b>       <small><i>(\" + ssb[\"url\"] + \")</i></small>\")")
+			exec("self." + ssb["id"] + "NameLabel.set_markup(\"<b>\" + ssb[\"name\"] + \"</b>       <small><i>(\" + ssb[\"url\"].replace(\"&\", \"&amp;\") + \")</i></small>\")")
 			exec("self." + ssb["id"] + "NameLabel.set_xalign(0.0)")
 			exec("self." + ssb["id"] + "Grid.attach(self." + ssb["id"] + "NameLabel, 3, 3, 3, 1)")
 			exec("self." + ssb["id"] + "DescriptionLabel = Gtk.Label()")

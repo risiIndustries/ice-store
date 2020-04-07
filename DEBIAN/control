@@ -1,0 +1,8 @@
+Package: ice-store
+Version: 1.0.0
+Architecture: all
+Maintainer: PizzaLovingNerd <pizzalovingnerd@teknik.io>
+Depends: ice(>=7.0.0), git, python3
+Section: net
+Priority: optional
+Description: A place to discover web apps.

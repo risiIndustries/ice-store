@@ -1,3 +1,10 @@
+ice-store (1.0.1) focal; urgency=low
+
+  * Fixed bug where ICE wouldn't open for non-featured applications
+  * Changed the directory in ~/.local/share to ice-store instead of iceStore
+
+ -- PizzaLovingNerd <pizzalovingnrd@teknik.io>  7 Apr 2020 16:13:00 −0700
+
 ice-store (1.0.0) focal; urgency=low
 
   * Initial release

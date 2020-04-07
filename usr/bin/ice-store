@@ -11,7 +11,7 @@ from urllib.request import urlopen
 import json
 
 home = os.getenv("HOME")
-iceStoreDir = "{0}/.local/share/iceStore".format(home)
+iceStoreDir = "{0}/.local/share/ice-store".format(home)
 
 if os.path.isdir(iceStoreDir) == False: 
 	os.makedirs(iceStoreDir)
@@ -138,7 +138,7 @@ class iceStore(Gtk.Window):
 
 		for ssb in repo["iceapps"]:
 			exec("def " + ssb["id"] + """_clicked(self):
-	subprocess.Popen(["./ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--ssbicon\", \"" + iceStoreDir + ssb["id"] + "\", \"--ssbcatagory\", \"" + ssb["catagory"] + "\", \"--dialogmode\", \"True\"])")
+	subprocess.Popen(["ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--ssbicon\", \"" + iceStoreDir + ssb["id"] + "\", \"--ssbcatagory\", \"" + ssb["catagory"] + "\", \"--dialogmode\", \"True\"])")
 
 			exec("self." + ssb["id"] + "Row = Gtk.ListBoxRow()")
 			exec("self." + ssb["id"] + "Box = Gtk.Box()")

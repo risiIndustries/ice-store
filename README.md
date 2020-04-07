@@ -4,15 +4,17 @@ A place for discovering SSBs
 # How to use
 
 Make sure you have the borderOS version of ice installed:
-https://github.com/borderOS/ice/
+https://github.com/borderOS/ice/releases
 
-And make sure that the repo.json file is in the same directory as the script.
-
-Then just run the main.py
+Than install the ice store using the .deb from releases:
+https://github.com/borderOS/ice-store/releases
 
 # Add to the repo
 
-In order to add SSBs to the repo, modify the json. If you do add something, please make sure you know how json syntax works. A syntax error with the json file will result in a syntax error with iceStore itself.
+In order to add SSBs to the repo, fork https://github.com/borderOS/ice-store-repo.
+Than modify the json. If you do add something, please make sure you know how json syntax works. A syntax error with the json file will result in a syntax error with iceStore itself.
+
+Once you add the SSBs to the Json, please submit a pull request.
 
 There are 6 values needed to be set for each SSB added.
 

@@ -35,6 +35,23 @@ from bs4 import BeautifulSoup
 import gettext
 import locale
 
+argparser = argparse.ArgumentParser()
+argparser.add_argument("-d", "--dialogmode", type=bool, default=False, help="puts ice into dialog mode", required=False)
+argparser.add_argument("-b", "--ssbbrowser", type=str, default="", help="browser of ice ssb", choices=["brave", "chrome", "chromium", "firefox", "vivaldi"], required=False)
+argparser.add_argument("-c", "--ssbcatagory", type=str, default="", help="catagory of ice ssb", choices=["accessories", "games", "graphics", "internet", "multimedia", "office", "programming", "system",], required=False)
+argparser.add_argument("-i", "--ssbicon", type=str, default="", help="icon for ssb", required=False)
+argparser.add_argument("-I", "--ssbisolated", type=bool, default="False", help="isolate ssb?", required=False)
+argparser.add_argument("-n", "--ssbname", type=str, default="", help="name of ice ssb", required=False)
+argparser.add_argument("-u", "--ssburl", type=str, default="", help="url of ice ssb", required=False)
+
+browserarg = argparser.parse_args().ssbbrowser
+catagoryarg = argparser.parse_args().ssbcatagory
+dialogmodearg = argparser.parse_args().dialogmode
+iconarg = argparser.parse_args().ssbicon
+isolatearg = argparser.parse_args().ssbisolated
+namearg = argparser.parse_args().ssbname
+urlarg = argparser.parse_args().ssburl
+
 _HOME = os.getenv("HOME")
 _ICE_DIR = "{0}/.local/share/ice".format(_HOME)
 _APPS_DIR = "{0}/.local/share/applications".format(_HOME)
@@ -47,19 +64,13 @@ _CHROMIUM_BIN = "/usr/bin/chromium-browser"
 _VIVALDI_BIN = "/usr/bin/vivaldi-stable"
 _FIREFOX_BIN = "/usr/bin/firefox"
 
+
+if iconarg == "": _SSB_ICON = _ICE_ICON
+else: _SSB_ICON = iconarg
+
 gettext.bindtextdomain('messages', os.path.dirname(__file__)+ '/../share/ice/locale/')
 gettext.textdomain('messages')
 _ = gettext.gettext
-
-argparser = argparse.ArgumentParser()
-argparser.add_argument("-n", "--ssbname", type=str, default="", help="name of ice ssb", required=False) # I went with "ssbname" for the argument instead of just "name". I don't know why, but if the argument is just "name", it doesn't record the input.
-argparser.add_argument("-u", "--ssburl", type=str, default="", help="url of ice ssb", required=False) # I changed "url" to "ssburl" just so it matches "ssbname". - PizzaLovingNerd
-argparser.add_argument("-b", "--ssbbrowser", type=str, default="", help="browser of ice ssb", choices=["brave", "chrome", "chromium", "firefox", "vivaldi"], required=False)
-argparser.add_argument("-d", "--dialogmode", type=bool, default=False, help="puts ice into dialog mode", required=False)
-namearg = argparser.parse_args().ssbname
-urlarg = argparser.parse_args().ssburl
-browserarg = argparser.parse_args().ssbbrowser
-dialogmodearg = argparser.parse_args().dialogmode
 
 # Requisite dirs
 for directory in [ _ICE_DIR, _APPS_DIR, _PROFILES_DIR, _FF_PROFILES_DIR ]: 
@@ -67,7 +78,7 @@ for directory in [ _ICE_DIR, _APPS_DIR, _PROFILES_DIR, _FF_PROFILES_DIR ]:
         os.system("mkdir -p {0}".format(directory))
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101 Firefox/64.0',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:74.0) Gecko/20100101 Firefox/74.0',
     #'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36'
 }
 
@@ -95,7 +106,7 @@ def get_details(app):
             try:
                 pixbuf = Pixbuf.new_from_file_at_size(iconline, 16, 16)
             except:
-                pixbuf = Pixbuf.new_from_file_at_size(_ICE_ICON, 16, 16)
+                pixbuf = Pixbuf.new_from_file_at_size(_SSB_ICON, 16, 16)
         elif "StartupWMClass=Chromium" in line:
             # for legacy apps
             is_ice = True
@@ -221,7 +232,6 @@ def get_favicon_url(url):
 
     return None
 
-
 def applicate():
     title = name.get_text()
     address = normalize(url.get_text())
@@ -314,7 +324,7 @@ def writefile(title, formatted, address, iconext, location):
 
     name.set_text("")
     url.set_text("")
-    iconpath = _ICE_ICON
+    iconpath = _SSB_ICON
     new_icon = Pixbuf.new_from_file_at_size(iconpath, 32, 32)
     icon.set_from_pixbuf(new_icon)
     details = get_details(appfile)
@@ -419,7 +429,7 @@ class IconSel(Gtk.FileChooserDialog):
             None,
             Gtk.FileChooserAction.OPEN,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
-        filew.set_filename(_ICE_ICON)
+        filew.set_filename(_SSB_ICON)
 
         filter1 = Gtk.FileFilter()
         filter1.set_name("Icons")
@@ -642,7 +652,7 @@ class Ice(Gtk.Window):
             new_icon = Pixbuf.new_from_file_at_size(iconpath, 32, 32)
             icon.set_from_pixbuf(new_icon)
         except:
-            iconpath = _ICE_ICON
+            iconpath = _SSB_ICON
             new_icon = Pixbuf.new_from_file_at_size(iconpath, 32, 32)
             icon.set_from_pixbuf(new_icon)
 
@@ -676,7 +686,7 @@ class Ice(Gtk.Window):
         url.set_text(urlarg)
         
         where_store = [_("Accessories"), _("Games"), _("Graphics"), _("Internet"),
-                       _("Office"), _("Programming"), _("Multimedia"), _("System")]
+                        _("Multimedia"), _("Office"), _("Programming"), _("System")]
         where_lab = Gtk.Label(label=_("Where in the menu?"))
         global where
         where = Gtk.ComboBoxText()
@@ -685,6 +695,15 @@ class Ice(Gtk.Window):
             where.append_text(entry)
         where.set_active(3)
 
+        if catagoryarg == "accessories": where.set_active(0)
+        elif catagoryarg == "games": where.set_active(1)
+        elif catagoryarg == "graphics": where.set_active(2)
+        elif catagoryarg == "internet": where.set_active(3)
+        elif catagoryarg == "multimedia": where.set_active(4)
+        elif catagoryarg == "office": where.set_active(5)
+        elif catagoryarg == "programming": where.set_active(6)
+        elif catagoryarg == "system": where.set_active(7)
+
         where_box = Gtk.HBox()
         where_void = Gtk.Label()
         where_box.pack_start(where_lab, False, False, 0)
@@ -692,7 +711,7 @@ class Ice(Gtk.Window):
         where_box.pack_start(where, True, True, 0)
 
         global iconpath
-        iconpath = _ICE_ICON
+        iconpath = _SSB_ICON
         icon_pixbuf = Pixbuf.new_from_file_at_size(iconpath, 32, 32)
         global icon
         icon = Gtk.Image()
@@ -789,9 +808,13 @@ class Ice(Gtk.Window):
         global isolate_profile
         isolate_profile=False
         isolate_box = Gtk.VBox()
-        isolate_button = Gtk.CheckButton(label=_(" Create the SSB with an isolated browser profile (Note: Firefox SSB's are always isolated)"))
+        isolate_button = Gtk.CheckButton(label=_("Create the SSB with an isolated browser profile (Note: Firefox SSB's are always isolated)"))
         isolate_button.connect("toggled", self.isolate_clicked)
         isolate_box.add(isolate_button)
+
+        if isolatearg == True:
+            isolate_button.set_active(True)
+            isolate_profile = True
 
         apply_button = Gtk.Button(label=_("Apply"))
         if dialogmodearg == True: apply_button.set_label("Ok")

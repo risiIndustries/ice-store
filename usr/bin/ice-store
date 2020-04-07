@@ -107,7 +107,7 @@ class iceStore(Gtk.Window):
 
 		for ssb in repo["featured"]:
 			exec("def " + ssb["id"] + """_clickedFeatured(self):
-	subprocess.Popen(["ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--ssbicon\", \"" + iceStoreDir + ssb["id"] + "\", \"--ssbcatagory\", \"" + ssb["catagory"] + "\", \"--dialogmode\", \"True\"])")
+	subprocess.Popen(["ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--ssbicon\", \"" + iceStoreDir + "/" + ssb["id"] + "\", \"--ssbcatagory\", \"" + ssb["catagory"] + "\", \"--dialogmode\", \"True\"])")
 
 			exec("self." + ssb["id"] + "FeaturedRow = Gtk.ListBoxRow()")
 			exec("self." + ssb["id"] + "FeaturedBox = Gtk.Box()")
@@ -138,7 +138,7 @@ class iceStore(Gtk.Window):
 
 		for ssb in repo["iceapps"]:
 			exec("def " + ssb["id"] + """_clicked(self):
-	subprocess.Popen(["ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--ssbicon\", \"" + iceStoreDir + ssb["id"] + "\", \"--ssbcatagory\", \"" + ssb["catagory"] + "\", \"--dialogmode\", \"True\"])")
+	subprocess.Popen(["ice", "--ssbname", \"""" + ssb["name"] +"\", \"--ssburl\", \"" + ssb["url"] + "\", \"--ssbicon\", \"" + iceStoreDir + "/" + ssb["id"] + "\", \"--ssbcatagory\", \"" + ssb["catagory"] + "\", \"--dialogmode\", \"True\"])")
 
 			exec("self." + ssb["id"] + "Row = Gtk.ListBoxRow()")
 			exec("self." + ssb["id"] + "Box = Gtk.Box()")

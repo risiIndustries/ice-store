@@ -16,10 +16,10 @@ iceStoreDir = "{0}/.local/share/ice-store".format(home)
 if os.path.isdir(iceStoreDir) == False: 
 	os.makedirs(iceStoreDir)
 	os.chdir(iceStoreDir)
-	git = subprocess.Popen(["git", "clone", "https://github.com/borderOS/iceStoreRepo", "."])
+	git = subprocess.Popen(["git", "clone", "https://github.com/risiOS/ice-store-repo", "."])
 else: 
 	os.chdir(iceStoreDir)
-	git = subprocess.Popen(["git", "pull", "https://github.com/borderOS/iceStoreRepo"])
+	git = subprocess.Popen(["git", "pull", "https://github.com/risiOS/ice-store-repo"])
 
 git.wait()
 
